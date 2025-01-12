@@ -1,4 +1,4 @@
-baseURL = 'https://blog.lighilit.top'
+# baseURL = 'https://example.org/'  # set in hugo.yaml
 languageCode = 'en-us'
 title = 'litlighilit Blog Site'
 theme = ["hugo-ficurinia"]
