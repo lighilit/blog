@@ -1,0 +1,9 @@
+baseURL = 'https://blog.lighilit.top'
+languageCode = 'en-us'
+title = 'litlighilit Blog Site'
+theme = ["hugo-ficurinia"]
+
+[params]
+    author = "litlighilit"
+    description = "Blog of lit lighilit"  # this will be added as metadata
+
