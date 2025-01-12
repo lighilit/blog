@@ -7,3 +7,12 @@ theme = ["hugo-ficurinia"]
     author = "litlighilit"
     description = "Blog of lit lighilit"  # this will be added as metadata
 
+
+[menu]
+    # these links will be added to the main navigation menu, sorted by weight
+    # other elements in this menu are added automatically from the "pages" folder
+    # the folder it will look into can be customized with the pages variable
+    # in params above
+    [[menu.main]]
+        name = "Notes"
+        url = "https://sphenoid-concrete-bdf.notion.site/note-66d318ce24ca48b5b2b872d1aaab0ca7?pvs=4"
