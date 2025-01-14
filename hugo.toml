@@ -15,7 +15,7 @@ theme = ["hugo-ficurinia"]
     # in params above
     [[menu.main]]
         name = "Notes"
-        url = "https://sphenoid-concrete-bdf.notion.site/note-66d318ce24ca48b5b2b872d1aaab0ca7?pvs=4"
+        url = "https://litlighilit.notion.site/note-66d318ce24ca48b5b2b872d1aaab0ca7?pvs=4"
 
     [[menu.icons]]
         identifier = "github"
