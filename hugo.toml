@@ -25,4 +25,4 @@ theme = ["hugo-ficurinia"]
     [[menu.icons]]
         identifier = "email"
         name = "Email"
-        url = "emailto://lit@lighilit.top"
+        url = "mailto:lit@lighilit.top"
