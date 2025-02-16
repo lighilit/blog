@@ -5,17 +5,24 @@ title = 'Unicode Space'
 tags = ['daily-trick', 'tech']
 +++
 
+## Introducion
+
 Some online chat clients, like WhatsApp, WeChat and Identity V, reject empty as well as
 space message.
 
-But once you wanna send message like `" "`,
-there's a workaround for WeChat: just use Unicode Spaces
+But once you wanna send blank message,
+there's a workaround for WhatsApp and WeChat: just use Unicode Spaces
+
+## Workaround
 
 That's due to WeChat's `isspace` only checks ASCII space (U+0020) but not others.
 
 One of the most commonly used is U+2000 ("\u2000" in `python`):
-
 {{<copyOnClick "\u2000" "click me to copy">}}
+
+> not worked for Identity V
+
+...
 
 ## A full list
 
