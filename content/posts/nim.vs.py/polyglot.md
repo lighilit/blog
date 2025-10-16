@@ -11,7 +11,7 @@ is handy to write Python code in Nim,
 what if writing polyglot code,
 which is runnable in both Nim and Python?
 
-> [An example (nimpylib's test_decimalAndSpace.nim)](https://github.com/nimpylib/nimpylib/blob/ef9240685b33a48d23dfea0ad649af66170d8c68/Modules/unicodedata/test_decimalAndSpace.nim) using such polyglot
+> [An example (NPython's test_decimalAndSpace.nim)](https://github.com/nimpylib/NPython/blob/5dffaea5daef781fb55154e7768ea614af08d113/Modules/unicodedata/test_decimalAndSpace.nim) using such polyglot
 ---
 
 ## How to
@@ -56,27 +56,14 @@ This part is harder.
 I'd like to give my solution:
 
 ### steps
-##### prepare
-Create `./tempfile.nim` with content:
 
 ```Nim
-## this is a pesudo cheat for Nim compiler to write both-python-nim-okey code
-template `not`*(a: static[string]) = discard
-```
-
-##### start
-```Nim
-import tempfile
-
-not """\"""
+"""\""".`!=`("").assert
 <Nim code here>
-not """"_"""
+discard "" != """"_"""
 ```
 
-Note
-
-### Note
-`tempfile` is just one option, you can choose to name it another, like `builtins`
+> You can also use `assert` over `discard` on the last line, which is easier to remember.
 
 ### Restriction
 The only restriction is that `<Nim code here>` cannot contain `"""`.
@@ -94,20 +81,26 @@ Here are their parsing results:
 ->
 
 ```Nim
-not ('\\' & '"')
+assert "" != ('\\' & '"')
 <Nim code here>
-not ('\\' & '_')
+discard "" != ('\\' & '_')
 ```
 
 dumpTree:
 
 ```
-  Call
-    Ident "not"
-    TripleStrLit  "\\\""  # `\"`
+  Command
+    Ident "assert"
+    Infix
+      Ident "!="
+      StrLit ""
+      TripleStrLit  "\\\""  # `\"`
   <Nim code here>
-  Call
-    TripleStrLit  "\"_"   # `\_`
+  DiscardStmt
+    Infix
+      Ident "!="
+      StrLit ""
+      TripleStrLit  "\"_"   # `\_`
 ``` 
 
 ##### Python:
@@ -115,18 +108,22 @@ dumpTree:
 ->
 
 ```Python
-not """
+"""\""".`!=`("").assert
 <Nim code here>
-not """ "_" ""
+discard "" != """ "_" ""
 ```
 
 ->
 
 ```Python
-not """
+"""\""".`!=`("").assert
 <Nim code here>
-not _"""
+discard "" != _"""
 ```
 ->
 
-False
+```Python
+'''""".`!=`("").assert
+<Nim code here>
+discard "" != _'''
+```
